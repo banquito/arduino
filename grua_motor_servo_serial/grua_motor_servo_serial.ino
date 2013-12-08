@@ -30,6 +30,8 @@ void loop() {
       armUp();
     } else if (command == "arm.down") {
       armDown();
+    } else if (command == "load.up") {
+      loadUp();
     } else if (command == "load.down") {
       loadDown();
     }
@@ -55,9 +57,15 @@ void armUp() {
   }
 }
 
-void loadDown() {
+void loadUp() {
   motor.run(FORWARD|RELEASE);
   delay(3000);
+  motor.run(BRAKE);
+}
+
+void loadDown() {
+  motor.run(BACKWARD|RELEASE);
+  delay(1000);
   motor.run(BRAKE);
 }
 
